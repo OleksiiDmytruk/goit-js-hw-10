@@ -35,7 +35,8 @@ function addCatInfo(evt) {
   breedId = evt.target.value;
   fetchCatByBreed(breedId)
     .then(resp => {
-      addCatInfoMarcup(resp);
+      const catInfoMarcup = addCatInfoMarcup(resp);
+      catInfoEl.innerHTML = catInfoMarcup;
     })
     .catch(error => {
       Notiflix.Notify.failure(errorTextEl.textContent);
@@ -59,7 +60,7 @@ function addSelect(resp) {
 }
 
 function addCatInfoMarcup(resp) {
-  const catInfoMarcup = resp
+  return resp
     .map(
       ({
         url,
@@ -71,7 +72,6 @@ function addCatInfoMarcup(resp) {
   <p>${breeds[0].temperament}</p>`
     )
     .join('');
-  catInfoEl.innerHTML = catInfoMarcup;
 }
 
 function toggleHidden(el) {
