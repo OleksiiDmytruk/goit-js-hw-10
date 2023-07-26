@@ -32,6 +32,7 @@ function onLoad() {
 
 function addCatInfo(evt) {
   toggleHidden(loadTextEl);
+  console.log(evt.target);
   breedId = evt.target.value;
   fetchCatByBreed(breedId)
     .then(resp => {
